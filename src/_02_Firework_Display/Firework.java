@@ -19,6 +19,7 @@ public class Firework{
 		//   Make each spark start at the middle bottom of the screen.
 	for(int i = 0; i<sparks.length; i++) {
 		sparks[i] = new Spark(300, 300);
+		
 	}
 	}
 	public void launch() {
