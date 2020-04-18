@@ -21,11 +21,21 @@ public class _01_RobotRace {
 			robos[i].setY(550);
 		}
 		// 4. make each robot start at the bottom of the screen, side by side, facing up
-		robos[0].setX(0);
-		robos[1].setX(90);
-		robos[2].setX(180);
-		robos[3].setX(270);
-		robos[4].setX(360);
+		robos[0].setX(90);
+		Thread rei = new Thread(() -> RobosRacing(robos[0], new Random().nextInt(100)));
+		robos[1].setX(180);
+		Thread ichi = new Thread(() -> RobosRacing(robos[1], new Random().nextInt(100)));
+		robos[2].setX(270);
+		Thread ni = new Thread(() -> RobosRacing(robos[2], new Random().nextInt(100)));
+		//robos[3].setX(360);
+		Thread san = new Thread(() -> RobosRacing(robos[3], new Random().nextInt(100)));
+		//robos[4].setX(450);
+		Thread yon = new Thread(() -> RobosRacing(robos[4], new Random().nextInt(100)));
+		rei.start();
+		ichi.start();
+		ni.start();
+		//san.start();
+		//yon.start();
 		// robos[5].setX(450);
 		// robos[6].setX(540);
 		// robos[7].setX(630);
@@ -33,21 +43,19 @@ public class _01_RobotRace {
 		// robos[9].setX(810);
 		// 5. use another for loop to iterate through the array and make each robot move
 		// a random amount less than 50.
-		Random a = new Random();
-		for (int i = 0; i < robos.length; i++) {
-			robos[i].move(a.nextInt(100));
-		}
+	}
+		//Random a = new Random();
 		// 6. use a while loop to repeat step 5 until a robot has reached the top of the
 		// screen.
+		public static void RobosRacing(Robot j, int h) {
 		boolean isRacing = true;
-		while (isRacing) {
-			for (int i = 0; i < robos.length; i++) {
-				int aa = i++;
-				robos[i].move(a.nextInt(100));
-				if (robos[i].getY() <= 100) {
+		Random a = new Random();
+		while(isRacing) {
+				j.move(a.nextInt(h));
+				if (j.getY() == 100) {
 					isRacing = false;
-					robos[i].turn(360);
-					JOptionPane.showMessageDialog(null, "Robot " + aa + " is the winner!");
+					j.turn(360);
+					JOptionPane.showMessageDialog(null, "Robot " + j + " is the winner!");
 				}
 			}
 		}
@@ -59,4 +67,3 @@ public class _01_RobotRace {
 
 	// 9. make the robots race around a circular track.
 
-}
