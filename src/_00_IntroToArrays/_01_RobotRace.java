@@ -22,18 +22,20 @@ public class _01_RobotRace {
 		}
 		// 4. make each robot start at the bottom of the screen, side by side, facing up
 		robos[0].setX(90);
-		Thread rei = new Thread(() -> RobosRacing(robos[0], new Random().nextInt(100)));
+		Thread rei = new Thread(() -> RobosRacing(robos[0], 1));
 		robos[1].setX(180);
-		Thread ichi = new Thread(() -> RobosRacing(robos[1], new Random().nextInt(100)));
+		Thread ichi = new Thread(() -> RobosRacing(robos[1], 1));
 		robos[2].setX(270);
-		Thread ni = new Thread(() -> RobosRacing(robos[2], new Random().nextInt(100)));
-		//robos[3].setX(360);
-		Thread san = new Thread(() -> RobosRacing(robos[3], new Random().nextInt(100)));
-		//robos[4].setX(450);
-		Thread yon = new Thread(() -> RobosRacing(robos[4], new Random().nextInt(100)));
+		Thread ni = new Thread(() -> RobosRacing(robos[2], 1));
+		robos[3].setX(360);
+		Thread san = new Thread(() -> RobosRacing(robos[3], 1));
+		robos[4].setX(450);
+		Thread yon = new Thread(() -> RobosRacing(robos[4], 200));
 		rei.start();
 		ichi.start();
 		ni.start();
+		san.start();
+		yon.start();
 		//san.start();
 		//yon.start();
 		// robos[5].setX(450);
@@ -51,7 +53,7 @@ public class _01_RobotRace {
 		boolean isRacing = true;
 		Random a = new Random();
 		while(isRacing) {
-				j.move(a.nextInt(h));
+				j.move(h);
 				if (j.getY() == 100) {
 					isRacing = false;
 					j.turn(360);
